@@ -13,10 +13,13 @@ public class UIManager : MonoBehaviour
     public Image enemyMarker;
     public float markerLifeTime = 1f;
     private float markerTimer = 0;
-    private Transform target;
-    public static Transform Target { get { return Instance.target; } }
+    private EnemyController target;
+    public static Transform Target { get { return Instance.target.transform; } }
     public Vector3 markerOffset;
+    public Vector3 healthbarOffset;
     public SpellWheel spellWheel;
+    public Image enemyHealthbar;
+    public Image enemyHealthbarFill;
     [Header("Selection")]
     public Image selectionMarker;
     [Header("Player")]
@@ -39,22 +42,33 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        EnemyMarkerUpdate();
+        healthbar.fillAmount = Mathf.Lerp(healthbar.fillAmount, PlayerController.CurrentHealth / PlayerController.Instance.maxHealth, Time.deltaTime * 5);
+    }
+
+    private void EnemyMarkerUpdate()
+    {
         if (markerTimer > 0)
         {
             markerTimer -= Time.deltaTime;
-            Instance.enemyMarker.rectTransform.position = InsideScreenPos(EnemyMarkerPosition(), enemyMarker.rectTransform.sizeDelta.x/2);
+            Instance.enemyMarker.rectTransform.position = InsideScreenPos(EnemyMarkerPosition(), enemyMarker.rectTransform.sizeDelta.x / 2);
+            Instance.enemyHealthbar.rectTransform.position = InsideScreenPos(Camera.main.WorldToScreenPoint(Instance.target.transform.position) + healthbarOffset, enemyHealthbar.rectTransform.sizeDelta.x / 2);
+            enemyHealthbarFill.fillAmount = Mathf.Lerp(enemyHealthbarFill.fillAmount, target.currentHealth / target.maxHealth, Time.deltaTime * 5);
         }
         else
+        {
             enemyMarker.gameObject.SetActive(false);
-
-        healthbar.fillAmount = Mathf.Lerp(healthbar.fillAmount, PlayerController.CurrentHealth / PlayerController.Instance.maxHealth, Time.deltaTime);
+            enemyHealthbar.gameObject.SetActive(false);
+            if (target != null)
+                enemyHealthbarFill.fillAmount = target.currentHealth / target.maxHealth;
+        }
     }
 
     public static Vector3 EnemyMarkerPosition()
     {
         if (Target == null)
             return Vector3.zero;
-        return Camera.main.WorldToScreenPoint(Instance.target.position) + Instance.markerOffset;
+        return Camera.main.WorldToScreenPoint(Instance.target.transform.position) + Instance.markerOffset;
     }
 
     public static void ShowSpellWheel(bool show)
@@ -68,12 +82,13 @@ public class UIManager : MonoBehaviour
     {
         markerTimer = show ? markerLifeTime : 0;
         enemyMarker.gameObject.SetActive(show);
+        enemyHealthbar.gameObject.SetActive(show);
     }
 
     public static void TargetEnemy(Transform enemy)
     {
         Instance.ShowEnemyMarker(true);
-        Instance.target = enemy;
+        Instance.target = enemy.GetComponent<EnemyController>();
     }
 
     public static void SetSelectionMarker (float value, Vector3 position)

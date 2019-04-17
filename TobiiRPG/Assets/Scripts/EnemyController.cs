@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Stats")]
     public float maxHealth;
-    private float currentHealth;
+    public float currentHealth;
     private NavMeshAgent agent;
     [Header("Spellcasting")]
     public GameObject spellPrefab;
@@ -108,7 +108,7 @@ public class EnemyController : MonoBehaviour
 
     private void ThrowSpell()
     {
-        Vector3 spawnPos = transform.position + (PlayerController.Instance.transform.position - transform.position) * spellSpawnDist;
+        Vector3 spawnPos = transform.position + (PlayerController.Instance.transform.position - transform.position).normalized * spellSpawnDist;
         GameObject spell = Instantiate(spellPrefab, spawnPos, Quaternion.identity);
         spell.GetComponent<SpellProjectile>().SetInfo(PlayerController.Instance.transform);
     }

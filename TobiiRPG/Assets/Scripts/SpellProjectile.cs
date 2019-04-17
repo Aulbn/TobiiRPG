@@ -10,7 +10,7 @@ public class SpellProjectile : MonoBehaviour
     public float lifeTime;
 
     private Transform target;
-    private Vector3 targetPosition;
+    private Vector3 targetDirection;
 
     private void Start()
     {
@@ -20,10 +20,8 @@ public class SpellProjectile : MonoBehaviour
 
     void Update()
     {
-        //transform.position += (following ? transform.position - target.position : transform.position - targetPosition) * Time.deltaTime * movementSpeed;
-        //transform.position = Vector3.MoveTowards(transform.position, (following ? transform.position - target.position : transform.position - targetPosition), Time.deltaTime * movementSpeed);
-        transform.position = Vector3.MoveTowards(transform.position, (following ? target.position : targetPosition), Time.deltaTime * movementSpeed);
-        //transform.position += (transform.position - target.position).normalized * 3f;
+        
+        transform.position += (following ? (target.position - transform.position).normalized : targetDirection) * movementSpeed * Time.deltaTime;
     }
 
     private IEnumerator LifeClock()
@@ -35,7 +33,7 @@ public class SpellProjectile : MonoBehaviour
     public void SetInfo(Transform target)
     {
         this.target = target;
-        targetPosition = target.position;
+        targetDirection = (target.position - transform.position).normalized;
     }
 
     private void OnCollisionEnter(Collision collision)

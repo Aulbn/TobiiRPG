@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     public static void ThrowSpell(int spellIndex)
     {
         //Vector3 spawnPos = Instance.transform.position + Instance.transform.forward * Instance.spellSpawnDist;
-        Vector3 spawnPos = Instance.transform.position + (UIManager.Target.position - Instance.transform.position) * Instance.spellSpawnDist;
+        Vector3 spawnPos = Instance.transform.position + (UIManager.Target.position - Instance.transform.position).normalized * Instance.spellSpawnDist;
         GameObject spell = Instantiate(spellIndex == 1 ? Instance.spell1 : Instance.spell2, spawnPos, Quaternion.identity);
         spell.GetComponent<SpellProjectile>().SetInfo(UIManager.Target);
     }
