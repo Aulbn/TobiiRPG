@@ -4766,7 +4766,7 @@ PrefabInstance:
     - target: {fileID: 6825209159301565154, guid: 30ea518c9bbbc22409388e6436ca89a1,
         type: 3}
       propertyPath: m_Name
-      value: Spell_Fire_Hit
+      value: Spell_Fire_HIt Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6825209159301565158, guid: 30ea518c9bbbc22409388e6436ca89a1,
         type: 3}
@@ -5273,6 +5273,41 @@ PrefabInstance:
       propertyPath: TrailModule.widthOverTrail.scalar
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: CollisionModule.quality
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6825209159301565156, guid: 30ea518c9bbbc22409388e6436ca89a1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5323,7 +5358,8 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2758020200819015925, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
 --- !u!4 &4376541220906410855 stripped
 Transform:
