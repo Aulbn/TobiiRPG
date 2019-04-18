@@ -5318,6 +5318,41 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.y.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.curve.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825209159301565159, guid: 30ea518c9bbbc22409388e6436ca89a1,
+        type: 3}
+      propertyPath: RotationModule.curve.minScalar
+      value: -0.7853981
+      objectReference: {fileID: 0}
     - target: {fileID: 6825209159301565156, guid: 30ea518c9bbbc22409388e6436ca89a1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
