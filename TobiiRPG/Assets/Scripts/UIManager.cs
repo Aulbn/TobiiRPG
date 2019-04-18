@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public float markerLifeTime = 1f;
     private float markerTimer = 0;
     private EnemyController target;
-    public static Transform Target { get { return Instance.target.transform; } }
+    public static Transform Target { get { return Instance.target == null ? null : Instance.target.transform; } }
     public Vector3 markerOffset;
     public Vector3 healthbarOffset;
     public SpellWheel spellWheel;
@@ -48,19 +48,18 @@ public class UIManager : MonoBehaviour
 
     private void EnemyMarkerUpdate()
     {
-        if (markerTimer > 0)
-        {
-            markerTimer -= Time.deltaTime;
-            Instance.enemyMarker.rectTransform.position = InsideScreenPos(EnemyMarkerPosition(), enemyMarker.rectTransform.sizeDelta.x / 2);
-            Instance.enemyHealthbar.rectTransform.position = InsideScreenPos(Camera.main.WorldToScreenPoint(Instance.target.transform.position) + healthbarOffset, enemyHealthbar.rectTransform.sizeDelta.x / 2);
-            enemyHealthbarFill.fillAmount = Mathf.Lerp(enemyHealthbarFill.fillAmount, target.currentHealth / target.maxHealth, Time.deltaTime * 5);
-        }
-        else
+        if (target == null || markerTimer <= 0)
         {
             enemyMarker.gameObject.SetActive(false);
             enemyHealthbar.gameObject.SetActive(false);
             if (target != null)
                 enemyHealthbarFill.fillAmount = target.currentHealth / target.maxHealth;
+            return;
+        } else {
+            markerTimer -= Time.deltaTime;
+            Instance.enemyMarker.rectTransform.position = InsideScreenPos(EnemyMarkerPosition(), enemyMarker.rectTransform.sizeDelta.x / 2);
+            Instance.enemyHealthbar.rectTransform.position = InsideScreenPos(Camera.main.WorldToScreenPoint(Instance.target.transform.position) + healthbarOffset, enemyHealthbar.rectTransform.sizeDelta.x / 2);
+            enemyHealthbarFill.fillAmount = Mathf.Lerp(enemyHealthbarFill.fillAmount, target.currentHealth / target.maxHealth, Time.deltaTime * 5);
         }
     }
 

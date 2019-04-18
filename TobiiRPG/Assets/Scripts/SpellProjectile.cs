@@ -8,6 +8,7 @@ public class SpellProjectile : MonoBehaviour
     public float movementSpeed;
     public bool following;
     public float lifeTime;
+    public GameObject explosionPrefab;
 
     private Transform target;
     private Vector3 targetDirection;
@@ -44,8 +45,8 @@ public class SpellProjectile : MonoBehaviour
             enemy.Damage(damage);
         if (player != null)
             player.Damage(damage);
-        //Spawna explosion
-        Debug.Log("Destroy spell");
+        if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.Euler(collision.GetContact(0).normal));
         Destroy(gameObject);
     }
 

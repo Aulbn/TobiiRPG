@@ -15,11 +15,10 @@ public class EnemyController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     private NavMeshAgent agent;
+    public float rotationSpeed = 2f;
     [Header("Spellcasting")]
-    public GameObject spellPrefab;
     public float spellCooldown;
     public float castDistance;
-    public float spellSpawnDist = 0.2f;
 
     private float spellCooldownTimer = 0;
     private Animator animator;
@@ -67,7 +66,7 @@ public class EnemyController : MonoBehaviour
     {
         state = EnemyStates.Combat;
         agent.isStopped = true;
-        Debug.Log("Enter combat");
+        //Debug.Log("Enter combat");
     }
     private void State_Combat()
     {
@@ -83,6 +82,7 @@ public class EnemyController : MonoBehaviour
             ThrowSpell();
             spellCooldownTimer = 0;
         }
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(PlayerController.Instance.transform.position - transform.position), Time.deltaTime * rotationSpeed);
     }
     private void EnterState_Chasing()
     {
@@ -112,8 +112,9 @@ public class EnemyController : MonoBehaviour
 
     private void ThrowSpell()
     {
-        Vector3 spawnPos = transform.position + (PlayerController.Instance.transform.position - transform.position).normalized * spellSpawnDist;
-        GameObject spell = Instantiate(spellPrefab, spawnPos, Quaternion.identity);
-        spell.GetComponent<SpellProjectile>().SetInfo(PlayerController.Instance.transform);
+        //Vector3 spawnPos = transform.position + (PlayerController.Instance.transform.position - transform.position).normalized * spellSpawnDist;
+        //GameObject spell = Instantiate(spellPrefab, spawnPos, Quaternion.identity);
+        //spell.GetComponent<SpellProjectile>().SetInfo(PlayerController.Instance.transform);
+        animator.SetTrigger("ThrowSpell");
     }
 }
