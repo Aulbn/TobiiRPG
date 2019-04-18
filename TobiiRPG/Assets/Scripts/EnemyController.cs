@@ -22,10 +22,12 @@ public class EnemyController : MonoBehaviour
     public float spellSpawnDist = 0.2f;
 
     private float spellCooldownTimer = 0;
+    private Animator animator;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -45,6 +47,8 @@ public class EnemyController : MonoBehaviour
             default:
                 break;
         }
+
+        animator.SetInteger("State", (int)state);
 
         if (currentHealth <= 0)
             Destroy(gameObject);
