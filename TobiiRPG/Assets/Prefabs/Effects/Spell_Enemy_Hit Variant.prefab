@@ -407,6 +407,11 @@ PrefabInstance:
       propertyPath: TrailModule.colorOverLifetime.maxGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4376541220906410854, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4376541220906410853, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -537,5 +542,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8655760292237191144, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}
+    - {fileID: 5302827505648562159, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}
+    - {fileID: 4376541220906410852, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}
