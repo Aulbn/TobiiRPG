@@ -5405,9 +5405,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2758020200819015925, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
+<<<<<<< HEAD:TobiiRPG/Assets/Prefabs/Spell_Fire_HIt Variant.prefab
+=======
     - {fileID: 6825209159301565157, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
     - {fileID: 1881355366670274153, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
     - {fileID: 3140125054139418222, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
+>>>>>>> origin/Assets:TobiiRPG/Assets/Prefabs/Effects/Spell_Fire_HIt Variant.prefab
   m_SourcePrefab: {fileID: 100100000, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
 --- !u!4 &4376541220906410855 stripped
 Transform:
