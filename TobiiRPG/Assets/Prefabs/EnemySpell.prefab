@@ -52,6 +52,8 @@ MonoBehaviour:
   movementSpeed: 15
   following: 0
   lifeTime: 10
+  explosionPrefab: {fileID: 6473141046911025892, guid: 5a8c3be5e8832734e9b54f90104334ab,
+    type: 3}
 --- !u!198 &6825209159301565159
 ParticleSystem:
   m_ObjectHideFlags: 0
