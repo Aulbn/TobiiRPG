@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,13 +34,10 @@ public class PlayerController : MonoBehaviour
     public float spellSpawnDist;
     private NavMeshAgent agent;
 
-    private Animator animator;
-
     private void Awake()
     {
         Instance = this;
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -57,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        AnimationUpdate();
-
         switch (playerState)
         {
             case PlayerState.IdleState:
@@ -79,28 +73,6 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void AnimationUpdate()
-    {
-        animator.SetInteger("State", (int)Instance.playerState);
-
-        if (agent.hasPath)
-        {
-            Vector3 corner = agent.path.corners[1];
-            Vector3 delta = (corner - transform.position).normalized;
-            float z = Vector3.Dot(transform.forward, delta);
-            float x = Vector3.Dot(transform.right, delta);
-            animator.SetFloat("Velocity_Z", z);
-            animator.SetFloat("Velocity_X", x);
-            Debug.Log("varför?");
-        }
-        
-        //if (Vector3.Distance(agent.destination, transform.position) < .2f)
-        //{
-        //    animator.SetFloat("Velocity_Z", Mathf.Lerp(animator.GetFloat("Velocity_Z"), 0, Time.deltaTime * 15));
-        //    animator.SetFloat("Velocity_X", Mathf.Lerp(animator.GetFloat("Velocity_X"), 0, Time.deltaTime * 15));
-        //}
     }
 
     private void EnemyMarkerSelectUpdate()
