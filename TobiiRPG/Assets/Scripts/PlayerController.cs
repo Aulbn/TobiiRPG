@@ -75,6 +75,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void AnimationUpdate()
+    {
+        animator.SetInteger("State", (int)Instance.playerState);
+
+        if (agent.hasPath)
+        {
+            Vector3 corner = agent.path.corners[1];
+            corner = new Vector3(corner.x, transform.position.y, corner.z);
+            Vector3 delta = (corner - transform.position).normalized;
+            float z = Vector3.Dot(transform.forward, delta);
+            float x = Vector3.Dot(transform.right, delta);
+            animator.SetFloat("Velocity_Z", z);
+            animator.SetFloat("Velocity_X", x);
+        }
+
+        if (Vector3.Distance(agent.destination, transform.position) <= 2f)
+        {
+            animator.SetFloat("Velocity_Z", Mathf.Lerp(animator.GetFloat("Velocity_Z"), 0, Time.deltaTime * 8));
+            animator.SetFloat("Velocity_X", Mathf.Lerp(animator.GetFloat("Velocity_X"), 0, Time.deltaTime * 8));
+        }
+    }
+
     private void EnemyMarkerSelectUpdate()
     {
         Graphic graphic = GazeManager.RaycastUI();
