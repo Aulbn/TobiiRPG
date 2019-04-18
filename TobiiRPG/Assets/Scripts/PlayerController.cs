@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
             float x = Vector3.Dot(transform.right, delta);
             animator.SetFloat("Velocity_Z", z);
             animator.SetFloat("Velocity_X", x);
-            Debug.Log("varför?");
         }
         
         //if (Vector3.Distance(agent.destination, transform.position) < .2f)
