@@ -297,6 +297,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 33764a3d7a41d5f4b840411ee3513057, type: 2}
+    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5810d5cb6af2def4d88fc69c3b88b21b, type: 2}
+    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
@@ -357,15 +367,30 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.key3.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+    - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5810d5cb6af2def4d88fc69c3b88b21b, type: 2}
-    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
+      propertyPath: RotationModule.curve.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: RotationModule.curve.minScalar
+      value: -0.7853981
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}

@@ -12,17 +12,20 @@ public class SpellProjectile : MonoBehaviour
 
     private Transform target;
     private Vector3 targetDirection;
+    private ParticleSystem particles;
 
     private void Start()
     {
+        particles = GetComponent<ParticleSystem>();
         if (lifeTime <= 0)
             StartCoroutine(LifeClock());
     }
 
     void Update()
     {
-        
-        transform.position += (following ? (target.position - transform.position).normalized : targetDirection) * movementSpeed * Time.deltaTime;
+        transform.position += (following && target != null ? (target.position - transform.position).normalized : targetDirection) * movementSpeed * Time.deltaTime;
+        if (!particles.IsAlive())
+            Destroy(gameObject);
     }
 
     private IEnumerator LifeClock()
@@ -39,15 +42,16 @@ public class SpellProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        EnemyController enemy = collision.collider.GetComponent<EnemyController>();
-        PlayerController player = collision.collider.GetComponent<PlayerController>();
-        if (enemy != null)
-            enemy.Damage(damage);
-        if (player != null)
-            player.Damage(damage);
+       //Debug.Log(collision.gameObject);
+        Killable killable = collision.collider.GetComponent<Killable>();
+        if (killable != null)
+            killable.Damage(damage);
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, Quaternion.Euler(collision.GetContact(0).normal));
-        Destroy(gameObject);
+
+        particles.Stop();
+        GetComponent<Light>().enabled = false;
+        GetComponent<Collider>().enabled = false;
     }
 
 }

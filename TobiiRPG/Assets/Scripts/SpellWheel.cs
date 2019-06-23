@@ -15,7 +15,7 @@ public class SpellWheel : MonoBehaviour
 
     private void Update()
     {
-        rect.position = UIManager.InsideScreenPos(UIManager.EnemyMarkerPosition(), rect.sizeDelta.x/2);
+        rect.position = UIManager.InsideScreenPos(UIManager.TargetMarkerPosition(), rect.sizeDelta.x/2);
 
         Graphic graphic = GazeManager.RaycastUI();
         if (graphic == null)

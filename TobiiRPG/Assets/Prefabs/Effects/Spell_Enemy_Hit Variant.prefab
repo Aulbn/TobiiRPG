@@ -412,11 +412,26 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4376541220906410854, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4376541220906410853, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 2428804b8b3433a4ebc2fab0884c8430, type: 2}
+    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d72f745dcad1afb46bda475eb491c75c, type: 2}
+    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1661527916125553272, guid: 69e08479d4ea5734cbda0649d4104519,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
@@ -531,16 +546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime3
       value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5810d5cb6af2def4d88fc69c3b88b21b, type: 2}
-    - target: {fileID: 3196750396818014405, guid: 69e08479d4ea5734cbda0649d4104519,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8655760292237191144, guid: 69e08479d4ea5734cbda0649d4104519, type: 3}

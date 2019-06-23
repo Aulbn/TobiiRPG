@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Killable
 {
     private enum EnemyStates
     {
-        Idle, Combat, Chasing
+        Idle, Combat, Chasing, Death
     }
     private EnemyStates state = EnemyStates.Idle;
 
-    [Header("Stats")]
-    public float maxHealth;
-    public float currentHealth;
-    private NavMeshAgent agent;
+    [Header("Movement")]
     public float rotationSpeed = 2f;
+    private NavMeshAgent agent;
     [Header("Spellcasting")]
     public float spellCooldown;
     public float castDistance;
@@ -23,15 +21,23 @@ public class EnemyController : MonoBehaviour
     private float spellCooldownTimer = 0;
     private Animator animator;
 
-    private void Start()
+    public static int LivingEnemies = 0;
+
+    private void Awake()
     {
+        LivingEnemies++;
+    }
+    private new void Start()
+    {
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
-        currentHealth = maxHealth;
     }
 
     private void Update()
     {
+        if (PlayerController.CurrentHealth == 0 && state != EnemyStates.Idle)
+            EnterState_Idle();
         switch (state)
         {
             case EnemyStates.Idle:
@@ -43,20 +49,21 @@ public class EnemyController : MonoBehaviour
             case EnemyStates.Chasing:
                 State_Chasing();
                 break;
+            case EnemyStates.Death:
+                break;
             default:
                 break;
         }
 
         animator.SetInteger("State", (int)state);
-
-        if (currentHealth <= 0)
-            Destroy(gameObject);
     }
 
     private void EnterState_Idle()
     {
         state = EnemyStates.Idle;
-        Debug.Log("Enter idle");
+        spellCooldownTimer = 0;
+        animator.SetInteger("State", 0);
+        //Debug.Log("Enter idle");
     }
     private void State_Idle()
     {
@@ -102,12 +109,21 @@ public class EnemyController : MonoBehaviour
        return Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
     }
 
-    public void Damage(float damage)
+    public override void Damage(float damage)
     {
         if (state == EnemyStates.Idle)
             EnterState_Combat();
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        Debug.Log("Damage!");
+        base.Damage(damage);
+        animator.SetTrigger("Hit");
+
+        if (currentHealth <= 0)
+        {
+            LivingEnemies--;
+            //Destroy(gameObject);
+            gameObject.tag = "Untagged";
+            state = EnemyStates.Death;
+            animator.SetTrigger("Die");
+        }
     }
 
     private void ThrowSpell()

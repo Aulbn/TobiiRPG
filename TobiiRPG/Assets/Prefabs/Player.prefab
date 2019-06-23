@@ -2224,10 +2224,11 @@ GameObject:
   - component: {fileID: 8081446912985448644}
   - component: {fileID: 8081446912985448645}
   - component: {fileID: 8081446912985448640}
+  - component: {fileID: 186808543955936389}
   - component: {fileID: 8081446912985448647}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2261,6 +2262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: 1
   maxHealth: 5
+  currentHealth: 0
   walkSpeed: 5
   walkAcceleration: 10
   rotationSpeed: 400
@@ -2270,6 +2272,7 @@ MonoBehaviour:
   spell1: {fileID: 6825209159301565154, guid: 30ea518c9bbbc22409388e6436ca89a1, type: 3}
   spell2: {fileID: 6825209159301565154, guid: fd0a52bed20f6d54ebdbb70bc26a443f, type: 3}
   spellSpawnDist: 1.5
+  agent: {fileID: 0}
 --- !u!136 &8081446912985448640
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2283,6 +2286,19 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &186808543955936389
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081446912985448641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &8081446912985448647
 NavMeshAgent:
